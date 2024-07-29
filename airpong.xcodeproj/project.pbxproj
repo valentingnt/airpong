@@ -49,14 +49,13 @@
 		4C6CAFBC2C57790C00F2FE9A = {
 			isa = PBXGroup;
 			children = (
+				4C6CAFC82C57790C00F2FE9A /* airpongApp.swift */,
+				4C6DB5F12C582C8300848A28 /* Preview Content */,
 				4C6CAFDB2C57794800F2FE9A /* Utilities */,
 				4C6CAFDA2C57794200F2FE9A /* Services */,
 				4C6CAFD92C57793B00F2FE9A /* ViewModels */,
 				4C6CAFD82C57793600F2FE9A /* Views */,
 				4C6CAFD72C57793000F2FE9A /* Models */,
-				4C6CAFD62C57792500F2FE9A /* App */,
-				4C6CAFCC2C57790D00F2FE9A /* Assets.xcassets */,
-				4C6CAFCE2C57790D00F2FE9A /* Preview Content */,
 				4C6CAFC62C57790C00F2FE9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,22 +66,6 @@
 				4C6CAFC52C57790C00F2FE9A /* airpong.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4C6CAFCE2C57790D00F2FE9A /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				4C6CAFCF2C57790D00F2FE9A /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		4C6CAFD62C57792500F2FE9A /* App */ = {
-			isa = PBXGroup;
-			children = (
-				4C6CAFC82C57790C00F2FE9A /* airpongApp.swift */,
-			);
-			path = App;
 			sourceTree = "<group>";
 		};
 		4C6CAFD72C57793000F2FE9A /* Models */ = {
@@ -126,6 +109,15 @@
 			children = (
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4C6DB5F12C582C8300848A28 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CAFCF2C57790D00F2FE9A /* Preview Assets.xcassets */,
+				4C6CAFCC2C57790D00F2FE9A /* Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
