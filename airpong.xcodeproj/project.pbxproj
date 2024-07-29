@@ -11,6 +11,13 @@
 		4C6CAFCB2C57790C00F2FE9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CAFCA2C57790C00F2FE9A /* ContentView.swift */; };
 		4C6CAFCD2C57790D00F2FE9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6CAFCC2C57790D00F2FE9A /* Assets.xcassets */; };
 		4C6CAFD02C57790D00F2FE9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6CAFCF2C57790D00F2FE9A /* Preview Assets.xcassets */; };
+		4C6CAFDD2C57796600F2FE9A /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CAFDC2C57796600F2FE9A /* GameState.swift */; };
+		4C6CAFDF2C57799000F2FE9A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CAFDE2C57799000F2FE9A /* Player.swift */; };
+		4C6CAFE12C5779CB00F2FE9A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CAFE02C5779CB00F2FE9A /* GameView.swift */; };
+		4C6CAFE32C5779EF00F2FE9A /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CAFE22C5779EF00F2FE9A /* GameViewModel.swift */; };
+		4C6CAFE62C577A1200F2FE9A /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CAFE52C577A1200F2FE9A /* MotionService.swift */; };
+		4C6CAFE82C577A2500F2FE9A /* HapticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CAFE72C577A2500F2FE9A /* HapticService.swift */; };
+		4C6CAFEA2C577A3700F2FE9A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CAFE92C577A3700F2FE9A /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,13 @@
 		4C6CAFCA2C57790C00F2FE9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4C6CAFCC2C57790D00F2FE9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6CAFCF2C57790D00F2FE9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4C6CAFDC2C57796600F2FE9A /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		4C6CAFDE2C57799000F2FE9A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4C6CAFE02C5779CB00F2FE9A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		4C6CAFE22C5779EF00F2FE9A /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		4C6CAFE52C577A1200F2FE9A /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
+		4C6CAFE72C577A2500F2FE9A /* HapticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticService.swift; sourceTree = "<group>"; };
+		4C6CAFE92C577A3700F2FE9A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +49,8 @@
 		4C6CAFBC2C57790C00F2FE9A = {
 			isa = PBXGroup;
 			children = (
+				4C6CAFCC2C57790D00F2FE9A /* Assets.xcassets */,
+				4C6CAFCE2C57790D00F2FE9A /* Preview Content */,
 				4C6CAFC72C57790C00F2FE9A /* airpong */,
 				4C6CAFC62C57790C00F2FE9A /* Products */,
 			);
@@ -51,10 +67,12 @@
 		4C6CAFC72C57790C00F2FE9A /* airpong */ = {
 			isa = PBXGroup;
 			children = (
-				4C6CAFC82C57790C00F2FE9A /* airpongApp.swift */,
-				4C6CAFCA2C57790C00F2FE9A /* ContentView.swift */,
-				4C6CAFCC2C57790D00F2FE9A /* Assets.xcassets */,
-				4C6CAFCE2C57790D00F2FE9A /* Preview Content */,
+				4C6CAFDB2C57794800F2FE9A /* Utilities */,
+				4C6CAFDA2C57794200F2FE9A /* Services */,
+				4C6CAFD92C57793B00F2FE9A /* ViewModels */,
+				4C6CAFD82C57793600F2FE9A /* Views */,
+				4C6CAFD72C57793000F2FE9A /* Models */,
+				4C6CAFD62C57792500F2FE9A /* App */,
 			);
 			path = airpong;
 			sourceTree = "<group>";
@@ -65,6 +83,57 @@
 				4C6CAFCF2C57790D00F2FE9A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4C6CAFD62C57792500F2FE9A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CAFC82C57790C00F2FE9A /* airpongApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4C6CAFD72C57793000F2FE9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CAFDC2C57796600F2FE9A /* GameState.swift */,
+				4C6CAFDE2C57799000F2FE9A /* Player.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4C6CAFD82C57793600F2FE9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CAFCA2C57790C00F2FE9A /* ContentView.swift */,
+				4C6CAFE02C5779CB00F2FE9A /* GameView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C6CAFD92C57793B00F2FE9A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CAFE22C5779EF00F2FE9A /* GameViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4C6CAFDA2C57794200F2FE9A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4C6CAFE52C577A1200F2FE9A /* MotionService.swift */,
+				4C6CAFE72C577A2500F2FE9A /* HapticService.swift */,
+				4C6CAFE92C577A3700F2FE9A /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4C6CAFDB2C57794800F2FE9A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +206,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6CAFE82C577A2500F2FE9A /* HapticService.swift in Sources */,
+				4C6CAFE32C5779EF00F2FE9A /* GameViewModel.swift in Sources */,
+				4C6CAFDF2C57799000F2FE9A /* Player.swift in Sources */,
+				4C6CAFDD2C57796600F2FE9A /* GameState.swift in Sources */,
+				4C6CAFEA2C577A3700F2FE9A /* NetworkService.swift in Sources */,
 				4C6CAFCB2C57790C00F2FE9A /* ContentView.swift in Sources */,
 				4C6CAFC92C57790C00F2FE9A /* airpongApp.swift in Sources */,
+				4C6CAFE12C5779CB00F2FE9A /* GameView.swift in Sources */,
+				4C6CAFE62C577A1200F2FE9A /* MotionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"airpong/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = PRL46Y9XS8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -300,7 +376,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"airpong/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = PRL46Y9XS8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

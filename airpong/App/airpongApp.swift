@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct airpongApp: App {
+struct PingPongGameApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

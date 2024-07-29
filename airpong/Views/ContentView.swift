@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var gameViewModel = GameViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Ping Pong Game")
+            // Ajoutez plus d'éléments UI ici
         }
-        .padding()
     }
 }
 
