@@ -5,10 +5,9 @@
 //  Created by Valentin Genest on 29/07/2024.
 //
 
-import Foundation
-
 struct GameState {
     var playerScore: Int = 0
     var opponentScore: Int = 0
-    var ballPosition: CGPoint = .zero
+    var isGameOver: Bool = false
+    let winningScore: Int = 11
 }

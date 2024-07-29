@@ -49,9 +49,14 @@
 		4C6CAFBC2C57790C00F2FE9A = {
 			isa = PBXGroup;
 			children = (
+				4C6CAFDB2C57794800F2FE9A /* Utilities */,
+				4C6CAFDA2C57794200F2FE9A /* Services */,
+				4C6CAFD92C57793B00F2FE9A /* ViewModels */,
+				4C6CAFD82C57793600F2FE9A /* Views */,
+				4C6CAFD72C57793000F2FE9A /* Models */,
+				4C6CAFD62C57792500F2FE9A /* App */,
 				4C6CAFCC2C57790D00F2FE9A /* Assets.xcassets */,
 				4C6CAFCE2C57790D00F2FE9A /* Preview Content */,
-				4C6CAFC72C57790C00F2FE9A /* airpong */,
 				4C6CAFC62C57790C00F2FE9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,19 +67,6 @@
 				4C6CAFC52C57790C00F2FE9A /* airpong.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4C6CAFC72C57790C00F2FE9A /* airpong */ = {
-			isa = PBXGroup;
-			children = (
-				4C6CAFDB2C57794800F2FE9A /* Utilities */,
-				4C6CAFDA2C57794200F2FE9A /* Services */,
-				4C6CAFD92C57793B00F2FE9A /* ViewModels */,
-				4C6CAFD82C57793600F2FE9A /* Views */,
-				4C6CAFD72C57793000F2FE9A /* Models */,
-				4C6CAFD62C57792500F2FE9A /* App */,
-			);
-			path = airpong;
 			sourceTree = "<group>";
 		};
 		4C6CAFCE2C57790D00F2FE9A /* Preview Content */ = {
@@ -351,6 +343,7 @@
 				DEVELOPMENT_TEAM = PRL46Y9XS8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMotionUsageDescription = "This app uses motion data to detect when you're hitting the ball.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -380,6 +373,7 @@
 				DEVELOPMENT_TEAM = PRL46Y9XS8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMotionUsageDescription = "This app uses motion data to detect when you're hitting the ball.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct PingPongGameApp: App {
+struct airpongApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GameView(viewModel: GameViewModel())
         }
     }
 }
