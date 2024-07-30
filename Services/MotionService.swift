@@ -1,11 +1,5 @@
-//
-//  MotionService.swift
-//  airpong
-//
-//  Created by Valentin Genest on 29/07/2024.
-//
-
 import CoreMotion
+import Combine
 
 class MotionService: ObservableObject {
     private let motionManager = CMMotionManager()
@@ -22,7 +16,7 @@ class MotionService: ObservableObject {
         }
         
         motionManager.startAccelerometerUpdates(to: .main) { [weak self] (data, error) in
-            guard let data = data, error == nil else {
+            guard let data = data else {
                 print("Error: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
@@ -41,6 +35,6 @@ class MotionService: ObservableObject {
             acceleration.y * acceleration.y +
             acceleration.z * acceleration.z
         )
-        return min(max(totalAcceleration - 1.0, 0), 2) / 2 // Normalise entre 0 et 1
+        return max(totalAcceleration - 1.0, 0)
     }
 }

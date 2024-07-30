@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  airpong
-//
-//  Created by Valentin Genest on 29/07/2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -12,10 +5,10 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Ping Pong Game")
+            VStack(spacing: 20) {
+                Text("Air Pong")
                     .font(.largeTitle)
-                    .padding()
+                    .fontWeight(.bold)
                 
                 NavigationLink(destination: GameView(viewModel: gameViewModel)) {
                     Text("Start Game")
@@ -28,8 +21,19 @@ struct ContentView: View {
                 
                 Text("Shake your phone to hit the ball!")
                     .font(.subheadline)
+                    .multilineTextAlignment(.center)
                     .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
             }
+            .padding()
+            .navigationBarHidden(true)
         }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

@@ -1,13 +1,11 @@
-//
-//  Player.swift
-//  airpong
-//
-//  Created by Valentin Genest on 29/07/2024.
-//
-
 import Foundation
 
-struct Player {
-    var id: String
+struct Player: Identifiable {
+    let id: UUID
     var name: String
+    
+    init(name: String) {
+        self.id = UUID()
+        self.name = name
+    }
 }
