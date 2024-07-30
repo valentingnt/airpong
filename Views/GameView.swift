@@ -11,7 +11,7 @@ struct GameView: View {
             
             if viewModel.gameState.isGameOver {
                 GameOverView(canStartNewGame: viewModel.canStartNewGame, onRestart: viewModel.startGame)
-            } else if viewModel.isServing && viewModel.canServe {
+            } else if viewModel.isServing {
                 ServeView(viewModel: viewModel)
             } else if viewModel.ballInPlay {
                 BallPlayView(viewModel: viewModel)

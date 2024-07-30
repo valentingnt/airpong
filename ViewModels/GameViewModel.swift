@@ -14,6 +14,7 @@ class GameViewModel: ObservableObject {
     @Published private(set) var canStartNewGame: Bool = true
     @Published private(set) var canServe: Bool = true
     @Published private(set) var isPhoneOrientedForServe: Bool = false
+    @Published private(set) var hasServeCompleted: Bool = false
 
     private let motionService: MotionService
     private let hapticService: HapticService
@@ -30,8 +31,8 @@ class GameViewModel: ObservableObject {
     private let maxHitIntensity: Double = 10.0
     private let minServeIntensity: Double = 3.0
     private let gravity: Double = 9.8
+    private let winningScore: Int = 11
     
-    private var isServeTossing: Bool = false
     private var hasBouncedOnTable: Bool = false
     private var lastHitTime: Date?
     private var randomBouncePoint: Double = 0.5
@@ -69,10 +70,8 @@ class GameViewModel: ObservableObject {
     }
 
     private func handleServeMotion(rawIntensity: Double, scaledIntensity: Double) {
-        if isServeTossing {
-            if isPhoneOrientedForServe && rawIntensity > minServeIntensity {
-                startServeBallToss(withIntensity: rawIntensity)
-            }
+        if canServe && isPhoneOrientedForServe && rawIntensity > minServeIntensity {
+            startServeBallToss(withIntensity: rawIntensity)
         } else if canHitBall && rawIntensity > minHitIntensity {
             hitServeBall(withIntensity: scaledIntensity)
         }
@@ -83,8 +82,6 @@ class GameViewModel: ObservableObject {
     }
 
     func startGame() {
-        guard canStartNewGame else { return }
-        
         resetGameState()
         motionService.startAccelerometerUpdates()
         prepareServe()
@@ -111,7 +108,7 @@ class GameViewModel: ObservableObject {
         ballTimer?.invalidate()
         serveTimer?.invalidate()
         hapticService.playGameOverHaptic()
-        gameState.isGameOver = true
+        canStartNewGame = true
     }
 
     func prepareServe() {
@@ -122,10 +119,8 @@ class GameViewModel: ObservableObject {
         serveMaxHeight = 1.0
         lastServeUpdateTime = nil
         canHitBall = false
-        isServeTossing = true
-        
-        serveTimer?.invalidate()
-        serveTimer = nil
+        canServe = true
+        hasServeCompleted = false
     }
 
     private func updateServeBallHeight() {
@@ -156,11 +151,11 @@ class GameViewModel: ObservableObject {
         serveVelocity = 0
         lastServeUpdateTime = nil
         canHitBall = false
-        isServeTossing = true
+        canServe = true
     }
 
     private func startServeBallToss(withIntensity intensity: Double) {
-        guard isServeTossing else { return }
+        guard canServe else { return }
         
         serveVelocity = intensity * 0.5
         lastServeUpdateTime = Date()
@@ -168,7 +163,7 @@ class GameViewModel: ObservableObject {
         
         startServeTossTimer()
         
-        isServeTossing = false
+        canServe = false
     }
     
     private func startServeTossTimer() {
@@ -185,13 +180,15 @@ class GameViewModel: ObservableObject {
         isServing = false
         serveTimer?.invalidate()
         ballInPlay = true
-        startBallMovement()
+        hasServeCompleted = false  // Reset this flag
+        startBallMovement(withInitialSpeed: intensity * 0.02)  // Adjust initial speed based on hit intensity
         
         canHitBall = false
         serveBallHeight = 0
     }
 
-    private func startBallMovement() {
+
+    private func startBallMovement(withInitialSpeed speed: Double) {
         ballTimer?.invalidate()
         ballTimer = Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { [weak self] _ in
             self?.updateBallProximity()
@@ -199,6 +196,7 @@ class GameViewModel: ObservableObject {
         hasBouncedOnTable = false
         randomBouncePoint = Double.random(in: 0.4...0.6)
         ballProximity = 0.0
+        ballSpeed = speed
     }
 
     private func updateBallProximity() {
@@ -221,6 +219,7 @@ class GameViewModel: ObservableObject {
     private func handleBallBounce() {
         hapticService.playTableBounceHaptic()
         hasBouncedOnTable = true
+        hasServeCompleted = true 
         ballSpeed *= 0.95
     }
 
@@ -229,6 +228,14 @@ class GameViewModel: ObservableObject {
         
         let currentTime = Date()
         guard lastHitTime == nil || currentTime.timeIntervalSince(lastHitTime!) > minimumTimeBetweenHits else {
+            return
+        }
+        
+        if !hasServeCompleted {
+            // Don't consider it an early hit if the serve hasn't completed
+            lastHitTime = currentTime
+            performNormalHit(intensity: intensity)
+            resetBallState()
             return
         }
         
@@ -274,18 +281,32 @@ class GameViewModel: ObservableObject {
     private func resetBallState() {
         randomBouncePoint = Double.random(in: 0.4...0.6)
         hasBouncedOnTable = false
+        hasServeCompleted = false
     }
 
     private func opponentScores() {
         gameState.incrementOpponentScore()
-        resetAfterPoint()
+        checkGameOver()
+        if !gameState.isGameOver {
+            resetAfterPoint()
+        }
     }
 
     func playerScores() {
         guard !gameState.isGameOver else { return }
         
         gameState.incrementPlayerScore()
-        resetAfterPoint()
+        checkGameOver()
+        if !gameState.isGameOver {
+            resetAfterPoint()
+        }
+    }
+    
+    private func checkGameOver() {
+        if gameState.playerScore >= winningScore || gameState.opponentScore >= winningScore {
+            gameState.isGameOver = true
+            endGame()
+        }
     }
 
     private func resetAfterPoint() {
@@ -297,6 +318,7 @@ class GameViewModel: ObservableObject {
             self?.prepareNextServe()
         }
     }
+
 
     private func prepareNextServe() {
         if !gameState.isGameOver {
