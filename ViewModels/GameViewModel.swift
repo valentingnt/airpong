@@ -128,7 +128,7 @@ class GameViewModel: ObservableObject {
         
         if let lastUpdate = lastServeUpdateTime {
             let deltaTime = currentTime.timeIntervalSince(lastUpdate)
-            serveBallHeight += serveVelocity * deltaTime
+            serveBallHeight += serveVelocity * deltaTime + 0.5 * gravity * deltaTime * deltaTime
             serveVelocity -= gravity * deltaTime
             
             serveMaxHeight = max(serveMaxHeight, serveBallHeight)
@@ -181,7 +181,7 @@ class GameViewModel: ObservableObject {
         serveTimer?.invalidate()
         ballInPlay = true
         hasServeCompleted = false  // Reset this flag
-        startBallMovement(withInitialSpeed: intensity * 0.02)  // Adjust initial speed based on hit intensity
+        startBallMovement(withInitialSpeed: 0.03 + (intensity * 0.05))
         
         canHitBall = false
         serveBallHeight = 0
